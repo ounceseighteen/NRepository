@@ -1,5 +1,6 @@
 import sqlite3
 from datetime import date
+from datetime import datetime
 
 def add_student():
     """Добавление нового ученика"""
@@ -54,7 +55,8 @@ def add_grade():
     grade = input("Оценка (1-5): ")
     quarter = input("Четверть (1-4): ")
     
-    today = date.today().isoformat()
+    # Получаем дату в формате ДД.ММ.ГГГГ
+    today = date.today().strftime('%d.%m.%Y')
     
     cursor.execute('''
         INSERT INTO grades (student_id, subject_id, grade, date, quarter)
